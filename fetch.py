@@ -6,15 +6,21 @@ from app import set_wallpaper
 
 API_KEY = "zfnI22BydNBUlLxtP56gFZHhNq5BQ9bvqzZgRL7Y"
 today = date.today()
-image_path = "/Users/ansh/Documents/projects/wallpaper/img.jpeg"
 
 
-response = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={API_KEY}&date={today}")
+
+response = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={API_KEY}&date=2023-08-03")
 r = response.json()
 url = r['url']
+
+file_name = url.split('/')[-1]
+
 content = r['explanation']
 
-urllib.request.urlretrieve(url, 'img.jpeg')
+print("url    ->> " + url)
+
+urllib.request.urlretrieve(url, file_name)
 print(content)
 
+image_path = f"/Users/ansh/Documents/projects/wallpaper/{file_name}"
 set_wallpaper(image_path)
