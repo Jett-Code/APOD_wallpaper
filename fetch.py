@@ -9,7 +9,7 @@ today = date.today()
 
 
 
-response = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={API_KEY}&date=2023-08-03")
+response = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={API_KEY}&date={today}")
 r = response.json()
 url = r['url']
 
